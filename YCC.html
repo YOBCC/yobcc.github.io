@@ -1,48 +1,291 @@
-# HBuilderX 自述文件 (markdown格式)
-***************************************
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>岳彩驰 - 求职个人主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF', // 科技蓝主色
+                        secondary: '#0E2B8A', // 深蓝辅助色
+                        light: '#F5F7FA', // 浅灰背景
+                        dark: '#1D2129', // 深色文字
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1;
+            }
+            .section-title {
+                @apply text-2xl font-bold text-secondary border-l-4 border-primary pl-3 mb-6;
+            }
+            .content-item {
+                @apply border-b border-gray-200 pb-4 mb-4 last:border-0 last:pb-0 last:mb-0;
+            }
+        }
+        /* 全局滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #165DFF;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: #F5F7FA;
+        }
+    </style>
+</head>
+<body class="bg-light text-dark min-h-screen">
+    <!-- 顶部导航/个人信息栏 -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-6 md:py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <h1 class="text-3xl font-bold text-primary">岳彩驰</h1>
+                <span class="ml-3 px-2 py-1 bg-primary/10 text-primary rounded text-sm">求职实习生</span>
+            </div>
+            <div class="flex flex-wrap gap-4 items-center">
+                <a href="tel:16699557828" class="flex items-center text-gray-700 hover:text-primary transition-colors">
+                    <i class="fa fa-phone mr-2"></i> 16699557828
+                </a>
+                <a href="mailto:726725523@qq.com" class="flex items-center text-gray-700 hover:text-primary transition-colors">
+                    <i class="fa fa-envelope mr-2"></i> 726725523@qq.com
+                </a>
+                <span class="flex items-center text-gray-700">
+                    <i class="fa fa-map-marker mr-2"></i> 杭州
+                </span>
+                <span class="flex items-center text-gray-700">
+                    <i class="fa fa-graduation-cap mr-2"></i> 2026.06毕业
+                </span>
+            </div>
+        </div>
+    </header>
 
-`HBuilderX`，H是HTML的首字母，Builder是构造者，X是HBuilder的下一代版本。我们也简称`HX`。
-`HX`是**轻如编辑器、强如IDE**的合体版本。
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- 左侧侧边栏：求职意向+个人标签+荣誉证书 -->
+            <div class="lg:col-span-1">
+                <!-- 求职意向卡片 -->
+                <div class="bg-white rounded-lg shadow p-6 card-hover mb-6">
+                    <h2 class="section-title text-xl mb-4">求职意向</h2>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fa fa-briefcase text-primary mr-3"></i>
+                            <div>
+                                <p class="font-medium">意向岗位</p>
+                                <p>售前/产品经理/项目管理实习生</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-map-pin text-primary mr-3"></i>
+                            <div>
+                                <p class="font-medium">意向城市</p>
+                                <p>杭州</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-clock-o text-primary mr-3"></i>
+                            <div>
+                                <p class="font-medium">到岗时间</p>
+                                <p>可即时到岗，空闲时间充沛</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-plane text-primary mr-3"></i>
+                            <div>
+                                <p class="font-medium">其他说明</p>
+                                <p>接受出差，抗压能力强</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-## 让我们简单了解下HX的特点
-1. 轻巧
-	仅10余M的绿色发行包(不含插件)
-2. 极速
-	不管是启动速度、大文档打开速度、编码提示，都极速响应
-	C++的架构性能远超Java或Electron架构
-3. vue开发强化
-	`HX`对vue做了大量优化投入，开发体验远超其他开发工具
-	[详见](https://hx.dcloud.net.cn/Tutorial/Language/vue) 按下Alt+鼠标左键可直接打开网址
-4. 小程序支持
-	国外开发工具没有对中国的小程序开发优化，`HX`可开发`uni-app`或`小程序`、`快应用`等项目，为国人提供更高效工具
-5. markdown利器
-	`HX`是唯一一个新建文件默认类型是markdown的编辑器，也是对md支持最强的编辑器
-	`HX`为md强化了众多功能，请**务必点击**【菜单-帮助-markdown语法示例】，快速掌握md及`HX`的强化技巧！
-6. 清爽护眼
-	HX的界面比其他工具更清爽简洁，绿柔主题经过科学的脑疲劳测试，是最适合人眼长期观看的主题界面
-	[详见](https://hx.dcloud.net.cn/Tutorial/Other/health)
-7. 强大的语法提示
-	`HX`是中国唯一一家拥有自主IDE语法分析引擎的公司，对前端语言提供准确的代码提示和转到定义(Alt+鼠标左键)
-8. 高效极客工具
-	更强大的多光标、智能双击...让字处理的效率大幅提升
-	了解`HX`的极客技巧，[详见](https://hx.dcloud.net.cn/Tutorial/UserGuide/skill)，
-9. 更强的json支持
-	现代js开发中大量json结构的写法，`HX`提供了比其他工具更高效的操作
-	[详见](https://hx.dcloud.net.cn/Tutorial/Language/json)
+                <!-- 个人标签卡片 -->
+                <div class="bg-white rounded-lg shadow p-6 card-hover mb-6">
+                    <h2 class="section-title text-xl mb-4">个人标签</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">党员</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">项目管理</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">运维工程</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">计算机专业</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Python/C/C++</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MySQL</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Linux</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">AI工具应用</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">组织协调</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">抗压能力强</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">纪律性强</span>
+                    </div>
+                </div>
 
+                <!-- 荣誉证书卡片 -->
+                <div class="bg-white rounded-lg shadow p-6 card-hover">
+                    <h2 class="section-title text-xl mb-4">荣誉证书</h2>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-certificate text-primary mr-2"></i>
+                            大学英语4级
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-certificate text-primary mr-2"></i>
+                            优秀学生干部
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-certificate text-primary mr-2"></i>
+                            优秀志愿者
+                        </li>
+                        <!-- 新增证书直接复制上方li即可 -->
+                    </ul>
+                </div>
+            </div>
 
-## 扩展性
-`HX`支持java插件、nodejs插件，并兼容了很多vscode的插件及代码块。
-还可以通过外部命令，方便的调用各种命令行功能，并设置快捷键。
+            <!-- 右侧主内容：教育经历+工作/服役经历+在校经历+自我评价 -->
+            <div class="lg:col-span-2">
+                <!-- 教育经历 -->
+                <div class="bg-white rounded-lg shadow p-6 card-hover mb-6">
+                    <h2 class="section-title">教育经历</h2>
+                    <div class="content-item">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">浙江中医药大学</h3>
+                            <span class="bg-gray-100 px-2 py-1 rounded text-sm">2022.09 - 2026.06</span>
+                        </div>
+                        <p class="text-gray-700 mb-3">计算机科学与技术 | 本科 | GPA：3.6 | 综合素质排名：前5%</p>
+                        <p class="font-medium mb-2">主修课程：</p>
+                        <p class="text-gray-700 mb-3">Java程序设计、数字电路基础、计算机组成原理、计算机网络技术、软件测试、MySQL数据库应用、数据结构与算法</p>
+                        <p class="font-medium mb-2">专业能力：</p>
+                        <p class="text-gray-700">扎实的计算机科学基础，精通C/C++/Python等编程语言及系统设计思维；熟练掌握常用算法、数据库管理及软件全生命周期开发测试流程；深入理解Linux(Ubuntu/Euler/CentOS)及Windows系统环境；积极探索AI工具(ChatGPT、Gemini、千问、deepseek)应用；对机器学习领域有系统性了解。</p>
+                    </div>
+                </div>
 
-如果你习惯了其他工具(如vscode或sublime)的快捷键，在菜单工具-快捷键方案中可以切换。
+                <!-- 工作/服役经历 -->
+                <div class="bg-white rounded-lg shadow p-6 card-hover mb-6">
+                    <h2 class="section-title">工作&服役经历</h2>
+                    <!-- 运维工程师 -->
+                    <div class="content-item">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">杭州云象科技有限公司 | 运维工程师</h3>
+                            <span class="bg-gray-100 px-2 py-1 rounded text-sm">2025.12.02 - 2026.02.14</span>
+                        </div>
+                        <p class="text-gray-700 mb-3">负责西子国际、华瑞航空、华策中心等智能清洁机器人部署/调试/交付项目</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>终端设备环境适配：多区域扫地机器人传感器校准与硬件组装，保障设备多场景稳定运行</li>
+                            <li>硬件设施布调与联试：完成充电基站布设及网络终端配置，解决复杂环境下通信波动问题</li>
+                            <li>现场交付与故障排除：参与商用项目硬件落地，快速响应并解决现场硬件报错，确保高标准交付</li>
+                            <li>提供线上技术支持，保障项目后续稳定运行</li>
+                        </ul>
+                    </div>
+                    <!-- 项目管理助理 -->
+                    <div class="content-item">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">浙江浙大网新图灵信息科技有限公司 | 项目管理助理</h3>
+                            <span class="bg-gray-100 px-2 py-1 rounded text-sm">2025.06.25 - 2025.09.27</span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>协助项目经理跟进杭州灵山景区弱电改造项目，记录每日施工人员、进度与安全情况</li>
+                            <li>整理多区域施工日报，为项目决策与规范管理提供数据支持</li>
+                            <li>协助推进多区域任务，收集/整理/归档施工信息，保障阶段性施工目标有序完成</li>
+                        </ul>
+                    </div>
+                    <!-- 部队服役 -->
+                    <div class="content-item">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg">中国人民解放军69349部队 | 副班长</h3>
+                            <span class="bg-gray-100 px-2 py-1 rounded text-sm">2022.03 - 2024.03</span>
+                        </div>
+                        <p class="text-gray-700 mb-2">服役于新疆边防五类艰苦地区，2023年9月在连队党支部入党</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>担任副班长，负责班内日常管理与任务协调，提升团队执行效率</li>
+                            <li>成功处置涉外边情2次，有效维护边境安全稳定</li>
+                            <li>指挥协调当地民族工人完成国边境停机坪修缮项目，提升边境设施保障能力</li>
+                        </ul>
+                    </div>
+                </div>
 
-## 结语
-在我们团队内部，`HX`不止替代了其他开发工具，还替代了记事本、word、evernote等，成为霸屏工具，令我们爱不释手。
-希望你也会喜欢上这款免费工具。
+                <!-- 在校经历 -->
+                <div class="bg-white rounded-lg shadow p-6 card-hover mb-6">
+                    <h2 class="section-title">在校经历</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- 班长 -->
+                        <div class="bg-light rounded-lg p-4 card-hover">
+                            <h3 class="font-bold mb-2 flex items-center">
+                                <i class="fa fa-users text-primary mr-2"></i>24级计算机科学与技术2班 班长
+                            </h3>
+                            <p class="text-gray-700 text-sm">协助老师统筹班级事务，高效完成数项信息统计工作，展现优秀的组织协调能力和执行力。</p>
+                        </div>
+                        <!-- 志愿者支队长 -->
+                        <div class="bg-light rounded-lg p-4 card-hover">
+                            <h3 class="font-bold mb-2 flex items-center">
+                                <i class="fa fa-heart-o text-primary mr-2"></i>杭港地铁志愿者 支队长
+                            </h3>
+                            <p class="text-gray-700 text-sm">作为校平安志愿者支队长，完成校园安全巡查和反诈宣传；组织7场志愿活动，指挥70+学生参与校方任务部署。</p>
+                        </div>
+                    </div>
+                </div>
 
-[赞助](https://dev.dcloud.net.cn/sponsor/) 欢迎对我们的工作给予支持
-[需求墙](https://dev.dcloud.net.cn/wish/) 可以在这里投票，以影响我们的工作优先级
-[论坛](https://ask.dcloud.net.cn/explore/)
-[Github](https://github.com/dcloudio/HBuilderX)
-[uni-im](https://im.dcloud.net.cn/#/?joinGroup=677366d82fe5bae6371cbbd9)
+                <!-- 自我评价 -->
+                <div class="bg-white rounded-lg shadow p-6 card-hover">
+                    <h2 class="section-title">自我评价</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        中共党员，具备两年新疆边防艰苦地区服役经历，练就了极强的**纪律性、时间观念和抗压能力**，拥有大局观和吃苦精神；对待工作积极主动、认真负责，诚实守信，无任何违纪记录，待人和善且善始善终。<br><br>
+                        计算机科学与技术专业科班出身，具备扎实的专业基础和技术能力，熟悉项目管理、运维工程全流程，拥有景区弱电改造、智能机器人部署等实际项目经验，具备优秀的**组织协调、任务推进和问题解决能力**。<br><br>
+                        熟练运用OFFICE等办公软件，乐于学习钻研新技术、新工具，积极探索AI工具在办公和学习中的应用；接受出差，目前空闲时间充沛，可即时到岗，能快速适应岗位需求并创造价值。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部版权 -->
+    <footer class="bg-white shadow-inner py-4 mt-8">
+        <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>© 2026 岳彩驰 个人求职主页 | 科技赋能 · 专业立身</p>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-secondary">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 回到顶部功能
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
